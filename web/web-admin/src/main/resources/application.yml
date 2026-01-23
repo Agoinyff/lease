@@ -24,3 +24,12 @@ mybatis-plus:
   global-config:
     db-config:
       logic-delete-field: is_deleted # 全局逻辑删除的实体字段名       这里直接通过注解进行了设置
+
+minio:
+  endpoint: http://8.222.139.88:9000
+  access-key: minioadmin
+  secret-key: Minio@123456
+  bucket-name: test-bucket
+
+springdoc:
+  default-flat-param-object: true

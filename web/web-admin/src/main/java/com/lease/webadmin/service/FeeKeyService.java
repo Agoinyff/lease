@@ -2,6 +2,9 @@ package com.lease.webadmin.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lease.model.entity.FeeKey;
+import com.lease.webadmin.vo.fee.FeeKeyVo;
+
+import java.util.List;
 
 /**
 * @author yff
@@ -10,4 +13,5 @@ import com.lease.model.entity.FeeKey;
 */
 public interface FeeKeyService extends IService<FeeKey> {
 
+    List<FeeKeyVo> feeInfoList();
 }
