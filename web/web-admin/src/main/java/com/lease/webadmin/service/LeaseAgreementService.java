@@ -1,7 +1,10 @@
 package com.lease.webadmin.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lease.model.entity.LeaseAgreement;
+import com.lease.webadmin.vo.agreement.AgreementQueryVo;
+import com.lease.webadmin.vo.agreement.AgreementVo;
 
 /**
 * @author yff
@@ -10,4 +13,7 @@ import com.lease.model.entity.LeaseAgreement;
 */
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
 
+    IPage<AgreementVo> pageAgreementByQuery(IPage<AgreementVo> page, AgreementQueryVo queryVo);
+
+    AgreementVo getAgreementById(Long id);
 }

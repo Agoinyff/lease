@@ -28,7 +28,7 @@
             <result property="isRelease" column="apart_is_release"/>
         </association>
     </resultMap>
-    <select id="pageRoomItemByQuery" resultMap="RoomItemVoMap">
+    <select id="pageItem" resultMap="RoomItemVoMap">
         select ri.id,
         ri.room_number,
         ri.rent,
