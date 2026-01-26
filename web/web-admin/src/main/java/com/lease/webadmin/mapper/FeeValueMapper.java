@@ -2,6 +2,9 @@ package com.lease.webadmin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lease.model.entity.FeeValue;
+import com.lease.webadmin.vo.fee.FeeValueVo;
+
+import java.util.List;
 
 /**
 * @author yff
@@ -11,6 +14,7 @@ import com.lease.model.entity.FeeValue;
 */
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
 
+    List<FeeValueVo> getFeeValueVoListByApartmentId(Long id);
 }
 
 

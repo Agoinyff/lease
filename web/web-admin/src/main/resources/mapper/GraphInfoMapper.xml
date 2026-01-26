@@ -5,14 +5,14 @@
 <mapper namespace="com.lease.webadmin.mapper.GraphInfoMapper">
 
     <resultMap id="BaseResultMap" type="com.lease.model.entity.GraphInfo">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="itemType" column="item_type" jdbcType="TINYINT"/>
-            <result property="itemId" column="item_id" jdbcType="BIGINT"/>
-            <result property="url" column="url" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="itemType" column="item_type" jdbcType="TINYINT"/>
+        <result property="itemId" column="item_id" jdbcType="BIGINT"/>
+        <result property="url" column="url" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -20,4 +20,14 @@
         item_id,url,create_time,
         update_time,is_deleted
     </sql>
+    <select id="getGraphVoListByApartmentId" resultType="com.lease.webadmin.vo.graph.GraphVo">
+        select name,
+               url
+        from graph_info
+        where is_deleted = 0
+          and item_type = #{itemType}
+          and item_id = #{id}
+    </select>
+
+
 </mapper>

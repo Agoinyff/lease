@@ -5,16 +5,27 @@
 <mapper namespace="com.lease.webadmin.mapper.LabelInfoMapper">
 
     <resultMap id="BaseResultMap" type="com.lease.model.entity.LabelInfo">
-            <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="type" column="type" jdbcType="TINYINT"/>
-            <result property="name" column="name" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+        <id property="id" column="id" jdbcType="BIGINT"/>
+        <result property="type" column="type" jdbcType="TINYINT"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,type,name,
         create_time,update_time,is_deleted
     </sql>
+    <select id="getLabelInfoListByApartmentId" resultType="com.lease.model.entity.LabelInfo">
+        select id,
+               type,
+               name
+        from label_info
+        where is_deleted = 0
+          and id in (select label_id
+                     from apartment_label
+                     where apartment_id = #{id}
+                       and is_deleted = 0)
+    </select>
 </mapper>

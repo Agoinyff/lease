@@ -19,4 +19,15 @@
         fee_key_id,create_time,update_time,
         is_deleted
     </sql>
+    <select id="getFeeValueVoListByApartmentId" resultType="com.lease.webadmin.vo.fee.FeeValueVo">
+        select fv.id, fv.name, fv.unit, fv.fee_key_id, fk.name as fee_key_name
+        from fee_value fv
+                 join fee_key fk on fv.fee_key_id = fk.id
+        WHERE fv.is_deleted = 0
+          AND fk.is_deleted = 0
+          and fv.id in (select fee_value_id
+                        from apartment_fee_value
+                        where apartment_id = #{apartmentId}
+                          and is_deleted = 0)
+    </select>
 </mapper>

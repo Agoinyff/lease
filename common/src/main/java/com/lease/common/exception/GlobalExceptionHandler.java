@@ -25,4 +25,12 @@ public class GlobalExceptionHandler {
     }
 
 
+    @ExceptionHandler(LeaseException.class)//捕获所有异常
+    @ResponseBody
+    public Result handle(LeaseException e){
+        e.printStackTrace();//打印异常信息
+        return Result.fail(e.getCode(),e.getMessage());
+    }
+
+
 }

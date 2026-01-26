@@ -2,6 +2,10 @@ package com.lease.webadmin.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.lease.model.entity.GraphInfo;
+import com.lease.model.enums.ItemType;
+import com.lease.webadmin.vo.graph.GraphVo;
+
+import java.util.List;
 
 /**
 * @author yff
@@ -11,6 +15,8 @@ import com.lease.model.entity.GraphInfo;
 */
 public interface GraphInfoMapper extends BaseMapper<GraphInfo> {
 
+
+    List<GraphVo> getGraphVoListByApartmentId(ItemType itemType, Long id);
 }
 
 
