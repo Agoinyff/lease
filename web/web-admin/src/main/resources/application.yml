@@ -16,6 +16,12 @@ spring:
       maximum-pool-size: 12 #连接池最大连接数，默认是10
       minimum-idle: 10 #最小空闲连接数量
       pool-name: SPHHikariPool # 连接池名称
+  data:
+    redis:
+      database: 0
+      host: redis-13854.c294.ap-northeast-1-2.ec2.cloud.redislabs.com
+      port: 13854
+      password: UCB51vDJGhWuhPiiIbsGBurLMiZI5Wuo
 
   jackson:
     time-zone: GMT+8

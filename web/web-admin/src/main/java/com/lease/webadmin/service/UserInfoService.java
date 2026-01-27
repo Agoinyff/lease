@@ -1,7 +1,9 @@
 package com.lease.webadmin.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.lease.model.entity.UserInfo;
+import com.lease.webadmin.vo.user.UserInfoQueryVo;
 
 /**
 * @author yff

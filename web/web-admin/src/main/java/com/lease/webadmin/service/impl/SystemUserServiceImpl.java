@@ -1,9 +1,13 @@
 package com.lease.webadmin.service.impl;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lease.model.entity.SystemUser;
 import com.lease.webadmin.mapper.SystemUserMapper;
 import com.lease.webadmin.service.SystemUserService;
+import com.lease.webadmin.vo.system.user.SystemUserItemVo;
+import com.lease.webadmin.vo.system.user.SystemUserQueryVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +19,16 @@ import org.springframework.stereotype.Service;
 public class SystemUserServiceImpl extends ServiceImpl<SystemUserMapper, SystemUser>
     implements SystemUserService {
 
+    @Autowired
+    private SystemUserMapper systemUserMapper;
+
+    @Override
+    public IPage<SystemUserItemVo> pageSystemUserItemVo(IPage<SystemUser> systemUserItemVoPage, SystemUserQueryVo queryVo) {
+
+      return systemUserMapper.pageSystemUserItemVo(systemUserItemVoPage,queryVo);
+
+
+    }
 }
 
 

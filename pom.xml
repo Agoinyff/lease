@@ -18,7 +18,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <mybatis-plus.version>3.5.15</mybatis-plus.version>
         <swagger.version>2.9.2</swagger.version>
-        <jwt.version>0.11.2</jwt.version>
+        <jwt.version>0.12.5</jwt.version>
         <easycaptcha.version>1.6.2</easycaptcha.version>
         <minio.version>8.2.0</minio.version>
         <knife4j.version>4.4.0</knife4j.version>
