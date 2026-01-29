@@ -18,6 +18,12 @@ spring:
       pool-name: SPHHikariPool # 连接池名称
   jackson:
     time-zone: GMT+8
+  data:
+    redis:
+      database: 0
+      host: redis-13854.c294.ap-northeast-1-2.ec2.cloud.redislabs.com
+      port: 13854
+      password: UCB51vDJGhWuhPiiIbsGBurLMiZI5Wuo
 
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:
@@ -31,6 +37,5 @@ springdoc:
 
 aliyun:
   sms:
-    access-key-id:
-    access-key-secret:
+
     endpoint: dysmsapi.ap-southeast-1.aliyuncs.com

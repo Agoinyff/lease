@@ -19,6 +19,9 @@ public class LeaseAgreementController {
     @Operation(summary = "获取个人租约基本信息列表")
     @GetMapping("listItem")
     public Result<List<AgreementItemVo>> listItem() {
+
+
+
         return Result.ok();
     }
 
