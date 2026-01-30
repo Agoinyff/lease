@@ -27,6 +27,7 @@ public class LoginController {
     public Result getCode(@RequestParam String phone) {
 
         loginService.getCode(phone);
+        System.out.println(phone);
 
         return Result.ok();
     }

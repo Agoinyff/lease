@@ -2,6 +2,10 @@ package com.lease.webapp.service;
 
 import com.lease.model.entity.ViewAppointment;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lease.webapp.vo.appointment.AppointmentDetailVo;
+import com.lease.webapp.vo.appointment.AppointmentItemVo;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -9,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-07-26 11:12:39
 */
 public interface ViewAppointmentService extends IService<ViewAppointment> {
+    List<AppointmentItemVo> listItem();
+
+    AppointmentDetailVo getDetailById(Long id);
 }

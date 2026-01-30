@@ -22,17 +22,17 @@ public class SmsServiceImpl implements SmsService {
         sendSmsRequest.setTemplateParam("{\"code\":\"" + code + "\"}");
 
         try {
-            SendSmsResponse response = client.sendSms(sendSmsRequest);
+//            SendSmsResponse response = client.sendSms(sendSmsRequest);
             // 打印返回结果，便于调试
-            System.out.println("========== 阿里云短信发送结果 ==========");
-            System.out.println("Code: " + response.getBody().getCode());
-            System.out.println("Message: " + response.getBody().getMessage());
-            System.out.println("RequestId: " + response.getBody().getRequestId());
-            System.out.println("BizId: " + response.getBody().getBizId());
-
-            if (!"OK".equals(response.getBody().getCode())) {
-                throw new RuntimeException("短信发送失败: " + response.getBody().getMessage());
-            }
+//            System.out.println("========== 阿里云短信发送结果 ==========");
+//            System.out.println("Code: " + response.getBody().getCode());
+//            System.out.println("Message: " + response.getBody().getMessage());
+//            System.out.println("RequestId: " + response.getBody().getRequestId());
+//            System.out.println("BizId: " + response.getBody().getBizId());
+//
+//            if (!"OK".equals(response.getBody().getCode())) {
+//                throw new RuntimeException("短信发送失败: " + response.getBody().getMessage());
+//            }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

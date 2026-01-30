@@ -2,6 +2,10 @@ package com.lease.webapp.service;
 
 import com.lease.model.entity.LeaseAgreement;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lease.webapp.vo.agreement.AgreementDetailVo;
+import com.lease.webapp.vo.agreement.AgreementItemVo;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -9,4 +13,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-07-26 11:12:39
 */
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
+
+
+    List<AgreementItemVo> listItemByPhone(Long Id);
+
+    AgreementDetailVo getDetailById(Long id);
 }

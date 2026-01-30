@@ -1,7 +1,10 @@
 package com.lease.webapp.service;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.lease.model.entity.BrowsingHistory;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lease.webapp.vo.history.HistoryItemVo;
 
 /**
 * @author liubo
@@ -9,4 +12,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2023-07-26 11:12:39
 */
 public interface BrowsingHistoryService extends IService<BrowsingHistory> {
+    IPage<HistoryItemVo> pageItemVo(Page<HistoryItemVo> historyItemVoPage);
+
+    void saveHistory(Long id, Long id1);
 }

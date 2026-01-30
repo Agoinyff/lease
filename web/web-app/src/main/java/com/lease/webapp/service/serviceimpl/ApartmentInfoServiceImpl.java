@@ -1,14 +1,13 @@
 package com.lease.webapp.service.serviceimpl;
 
 import com.lease.model.entity.ApartmentInfo;
+import com.lease.model.entity.FacilityInfo;
 import com.lease.model.entity.LabelInfo;
 import com.lease.model.enums.ItemType;
-import com.lease.webapp.mapper.ApartmentInfoMapper;
-import com.lease.webapp.mapper.GraphInfoMapper;
-import com.lease.webapp.mapper.LabelInfoMapper;
-import com.lease.webapp.mapper.RoomInfoMapper;
+import com.lease.webapp.mapper.*;
 import com.lease.webapp.service.ApartmentInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.lease.webapp.vo.apartment.ApartmentDetailVo;
 import com.lease.webapp.vo.apartment.ApartmentItemVo;
 import com.lease.webapp.vo.graph.GraphVo;
 import org.springframework.beans.BeanUtils;
@@ -36,6 +35,9 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
     @Autowired
     private RoomInfoMapper roomInfoMapper;
 
+    @Autowired
+    private FacilityInfoMapper facilityInfoMapper;
+
     @Override
     public ApartmentItemVo selectApartmentItemVoById(Long apartmentId) {
         ApartmentInfo apartmentInfo = apartmentInfoMapper.selectById(apartmentId);
@@ -53,6 +55,19 @@ public class ApartmentInfoServiceImpl extends ServiceImpl<ApartmentInfoMapper, A
         apartmentItemVo.setLabelInfoList(labelInfoList);
         apartmentItemVo.setMinRent(minRent);
         return apartmentItemVo;
+    }
+
+    @Override
+    public ApartmentDetailVo getDetailById(Long id) {
+        ApartmentDetailVo apartmentDetailVo = new ApartmentDetailVo();
+
+        ApartmentItemVo apartmentItemVo = this.selectApartmentItemVoById(id);
+        BeanUtils.copyProperties(apartmentItemVo, apartmentDetailVo);
+
+        List<FacilityInfo> facilityInfoList = facilityInfoMapper.selectListByApartmentId(id);
+        apartmentDetailVo.setFacilityInfoList(facilityInfoList);
+
+        return apartmentDetailVo;
     }
 }
 

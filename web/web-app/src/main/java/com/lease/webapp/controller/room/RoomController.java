@@ -49,9 +49,10 @@ public class RoomController {
     @GetMapping("pageItemByApartmentId")
     public Result<IPage<RoomItemVo>> pageItemByApartmentId(@RequestParam long current, @RequestParam long size, @RequestParam Long id) {
 
+        Page<RoomItemVo> roomItemVoPage = new Page<>(current, size);
+        IPage<RoomItemVo> result = roomInfoService.pageItemByApartmentId(roomItemVoPage, id);
 
 
-
-        return Result.ok();
+        return Result.ok(result);
     }
 }

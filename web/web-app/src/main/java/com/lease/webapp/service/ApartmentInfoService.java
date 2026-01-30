@@ -2,6 +2,7 @@ package com.lease.webapp.service;
 
 import com.lease.model.entity.ApartmentInfo;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.lease.webapp.vo.apartment.ApartmentDetailVo;
 import com.lease.webapp.vo.apartment.ApartmentItemVo;
 
 /**
@@ -11,4 +12,6 @@ import com.lease.webapp.vo.apartment.ApartmentItemVo;
  */
 public interface ApartmentInfoService extends IService<ApartmentInfo> {
     ApartmentItemVo selectApartmentItemVoById(Long apartmentId);
+
+    ApartmentDetailVo getDetailById(Long id);
 }

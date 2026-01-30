@@ -2,9 +2,11 @@ package com.lease.webapp.service.serviceimpl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.lease.common.login.LoginUserHolder;
 import com.lease.model.entity.*;
 import com.lease.model.enums.ItemType;
 import com.lease.webapp.mapper.*;
+import com.lease.webapp.service.BrowsingHistoryService;
 import com.lease.webapp.service.RoomInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.lease.webapp.vo.apartment.ApartmentItemVo;
@@ -49,6 +51,8 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
     private FeeValueMapper feeValueMapper;
     @Autowired
     private ApartmentInfoServiceImpl apartmentInfoService;
+    @Autowired
+    private BrowsingHistoryService browsingHistoryService;
 
     @Override
     public IPage<RoomItemVo> pageItemVo(Page<RoomItemVo> roomItemVoPage, RoomQueryVo queryVo) {
@@ -94,7 +98,19 @@ public class RoomInfoServiceImpl extends ServiceImpl<RoomInfoMapper, RoomInfo>
         roomDetailVo.setFeeValueVoList(feeValueVoList);
         roomDetailVo.setLeaseTermList(leaseTermList);
 
+
+        browsingHistoryService.saveHistory(LoginUserHolder.getLoginUser().getId(), id);
+
+
+
         return roomDetailVo;
+    }
+
+    @Override
+    public IPage<RoomItemVo> pageItemByApartmentId(Page<RoomItemVo> roomItemVoPage, Long id) {
+
+       return roomInfoMapper.pageItemByApartmentId(roomItemVoPage, id);
+
     }
 }
 
