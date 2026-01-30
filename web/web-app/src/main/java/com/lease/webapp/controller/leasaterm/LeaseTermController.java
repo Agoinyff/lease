@@ -2,8 +2,10 @@ package com.lease.webapp.controller.leasaterm;
 
 import com.lease.common.result.Result;
 import com.lease.model.entity.LeaseTerm;
+import com.lease.webapp.service.LeaseTermService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,9 +18,17 @@ import java.util.List;
 @Tag(name = "租期信息")
 public class LeaseTermController {
 
+
+    @Autowired
+    private LeaseTermService leaseTermService;
+
     @GetMapping("listByRoomId")
     @Operation(summary = "根据房间id获取可选获取租期列表")
     public Result<List<LeaseTerm>> list(@RequestParam Long id) {
-        return Result.ok();
+
+        List<LeaseTerm> leaseTermList = leaseTermService.listByRoomId(id);
+
+
+        return Result.ok(leaseTermList);
     }
 }
